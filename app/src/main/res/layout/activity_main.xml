@@ -14,17 +14,16 @@
         app:autoFocusButtonVisible="true"
         app:flashButtonColor="@android:color/white"
         app:flashButtonVisible="true"
-        app:maskColor="#6D000000"
+        app:maskColor="#6D000000"/>
 
         <TextView
             android:id="@+id/tv_textView"
-            android:layout_
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/scanner_view"
             android:layout_centerHorizontal="true"
             android:layout_margin="20dp"
-            android:text="scan product"
+            android:text="@string/scan_product"
             android:textColor="@android:color/black" />
 
 </RelativeLayout>
