@@ -6,6 +6,7 @@ import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -18,6 +19,7 @@ import com.budiyev.android.codescanner.ScanMode
 import kotlinx.android.synthetic.main.activity_main.*
 
 private const val CAMERA_REQUEST_CODE =101
+var varres:Any?=null
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,6 +35,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun codeScanner() {
         codeScanner = CodeScanner(this, scanner_view)
+        var screen = findViewById<TextView>(R.id.tv_textView)
 
         codeScanner.apply {
             camera = CodeScanner.CAMERA_BACK
@@ -45,7 +48,7 @@ class MainActivity : AppCompatActivity() {
 
             decodeCallback = DecodeCallback {
                 runOnUiThread{
-                    tv_textView.text = it.text
+                    screen.text= varres.toString()
                 }
 
             }
@@ -71,6 +74,10 @@ class MainActivity : AppCompatActivity() {
     override fun onPause() {
         codeScanner.releaseResources()
         super.onPause()
+    }
+
+    fun readsc(){
+        varres = codeScanner.decodeCallback
     }
 
     private fun setupPermissions() {
